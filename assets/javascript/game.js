@@ -1,16 +1,13 @@
 $(document).ready(function () {
-
-
     // GLOBAL VARIABLES
-    var userGuess = 0;
     var targetNumber;
     var wins = 0;
     var losses = 0;
     var counter = 0;
-    var crystal1 = Math.floor(Math.random() * 12) + 1;
-    var crystal2 = Math.floor(Math.random() * 12) + 1;
-    var crystal3 = Math.floor(Math.random() * 12) + 1;
-    var crystal4 = Math.floor(Math.random() * 12) + 1;
+    // var crystal1 = Math.floor(Math.random() * 12) + 1;
+    // var crystal2 = Math.floor(Math.random() * 12) + 1;
+    // var crystal3 = Math.floor(Math.random() * 12) + 1;
+    // var crystal4 = Math.floor(Math.random() * 12) + 1;
 
     // array for 4 crystals and their random values ( 1 - 12)
     // 
@@ -29,6 +26,7 @@ $(document).ready(function () {
     function resetGame() {
         var targetNumber = Math.floor(Math.random() * 120) + 19;
         $("#number-to-guess").text(targetNumber);
+        console.log("target #: " + targetNumber)
         // userScore = 0;
         counter = 0;
         crystal1 = Math.floor(Math.random() * 12) + 1;
@@ -41,25 +39,25 @@ $(document).ready(function () {
         $("#crystal4").attr("value", crystal4);
     }
 
-
-
     //-----PROCESS-----
 
-
-    initializeScreen();
-
     //when a crystal is clicked
-    $(".crystals").on("click", function () {
-        counter = counter + parseInt($(this).attr("value"));
-        $("#your-guess").text(counter) // these values need to add together
+    $(".crystals").on("click",  function () {
+        var crystalValue = ($(this).attr("value"));
+        crystalValue = parseInt(crystalValue);
+        counter += crystalValue;
+        $("#your-guess").text(counter); 
+        console.log(counter);
+    
         if (counter === targetNumber) {
-            wins++
-            $("#winsText").text(wins)
+            alert("You won!");
+            wins++;
+            $("#winsText").text(wins);
             resetGame();
         } else if (counter > targetNumber) {
-            losses++
             alert("Try again!");
-            $("#winsText").text(wins)
+            losses++;
+            $("#lossesText").text(losses);
             resetGame();
         }
 
@@ -68,7 +66,7 @@ $(document).ready(function () {
 
 
 
-
+    initializeScreen();
     resetGame();
 });
 
