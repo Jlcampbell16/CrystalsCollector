@@ -15,7 +15,7 @@ $(document).ready(function () {
     //-----FUNCTIONS-----
     function initializeScreen() {
         //generate a random number for the target number and display on screen
-        var targetNumber = Math.floor(Math.random() * 120) + 19;
+        targetNumber = Math.floor(Math.random() * 120) + 19;
         $("#number-to-guess").text(targetNumber);
 
         userScore = 0; // or ""?
@@ -24,11 +24,18 @@ $(document).ready(function () {
     }
 
     function resetGame() {
-        var targetNumber = Math.floor(Math.random() * 120) + 19;
+        targetNumber = Math.floor(Math.random() * 120) + 19;
         $("#number-to-guess").text(targetNumber);
         console.log("target #: " + targetNumber)
         // userScore = 0;
         counter = 0;
+
+        //function to generate random crystal value return math.floor
+        $(".crystal").each(function(index){
+        $(this).attr("value", generateRandomValue()) //data-value
+        })
+
+
         crystal1 = Math.floor(Math.random() * 12) + 1;
         crystal2 = Math.floor(Math.random() * 12) + 1;
         crystal3 = Math.floor(Math.random() * 12) + 1;
@@ -37,24 +44,26 @@ $(document).ready(function () {
         $("#crystal2").attr("value", crystal2);
         $("#crystal3").attr("value", crystal3);
         $("#crystal4").attr("value", crystal4);
+        console.log ( $("#crystal4").attr("value"));
     }
 
     //-----PROCESS-----
 
     //when a crystal is clicked
     $(".crystals").on("click",  function () {
+    
         var crystalValue = ($(this).attr("value"));
         crystalValue = parseInt(crystalValue);
         counter += crystalValue;
         $("#your-guess").text(counter); 
-        console.log(counter);
-    
+        console.log("this is the counter " + counter);
+        console.log("crystal value " + crystalValue)
         if (counter === targetNumber) {
             alert("You won!");
             wins++;
             $("#winsText").text(wins);
             resetGame();
-        } else if (counter > targetNumber) {
+        } else if (counter >= targetNumber) {
             alert("Try again!");
             losses++;
             $("#lossesText").text(losses);
@@ -62,9 +71,6 @@ $(document).ready(function () {
         }
 
     });
-
-
-
 
     initializeScreen();
     resetGame();
