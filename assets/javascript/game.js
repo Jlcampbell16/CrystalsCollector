@@ -4,34 +4,29 @@ $(document).ready(function () {
     var wins = 0;
     var losses = 0;
     var counter = 0;
-    
+
     $(".crystals").each(function (index) {
-        console.log("in .each",index)
         $(this).attr("value", generateRandomValue()) //data-value
-    }); 
+    });
 
     //-----FUNCTIONS-----
-    // create a function to generate a random number between 1 and 12
-    // loop through the crystal elements on the page using the jQuery .each
-    // method... then, within, target each individual crystal and assign it a
-    // random value
     function generateRandomValue() {
         return Math.floor(Math.random() * 12) + 1;
     }
     //function to generate random crystal value return math.floor
-    
+
     function resetGame() {
         targetNumber = Math.floor(Math.random() * 102) + 19;
         $("#number-to-guess").text(targetNumber);
-  
+
         counter = 0;
-        generateRandomValue ();
+        generateRandomValue();
 
 
         $(".crystals").each(function (index) {
             $(this).attr("value", generateRandomValue()) //data-value
         });
-        }
+    }
 
     //-----PROCESS-----
 
