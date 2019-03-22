@@ -17,11 +17,10 @@ $(document).ready(function () {
 
     function resetGame() {
         targetNumber = Math.floor(Math.random() * 102) + 19;
-        $("#number-to-guess").text(targetNumber);
 
+        $("#number-to-guess").text(targetNumber);
         counter = 0;
         generateRandomValue();
-
 
         $(".crystals").each(function (index) {
             $(this).attr("value", generateRandomValue()) //data-value
@@ -32,7 +31,6 @@ $(document).ready(function () {
 
     //when a crystal is clicked
     $(".crystals").on("click", function () {
-
         var crystalValue = ($(this).attr("value"));
         crystalValue = parseInt(crystalValue);
         counter += crystalValue;
@@ -55,4 +53,3 @@ $(document).ready(function () {
 
     resetGame();
 });
-
