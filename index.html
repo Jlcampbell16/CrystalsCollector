@@ -23,15 +23,25 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,700" rel="stylesheet">
+
     <title>Crystal Collector</title>
 
 </head>
 
 
 <body>
+    <header>
+        <h1 class="title">Crystal Collector</h1>
+        <div class="instructions">
+            <p>Each crystal below is worth a different amount.
+                <br>Try to use each crystal without to match the target amount without going over. </p>
+        </div>
+    </header>
+
     <div class=container>
-        <h1>Number to Guess: <span id="number-to-guess"></span></h1>
-        <h1>Your Guess: <span id="your-guess"></span></h1>
+        <h3>Number to Guess: <span id="number-to-guess"></span></h3>
+        <h3>Your Guess: <span id="your-guess"></span></h3>
 
         <div>
             <!-- 4 images-->
@@ -41,9 +51,14 @@
             <img src="assets/images/crystal4.jpg" class="crystals" id="crystal4" alt="Crystal" value="">
         </div>
 
-        <p>Wins: <span id="winsText"></span></p>
-        <p>Losses: <span id="lossesText"></span></p>
+        <div class="row">
+            <div class="col-md-6 counter">Wins: <span id="winsText"></span></div>
+            <div class="col-md-6 counter">Losses: <span id="lossesText"></span></div>
+        </div>
     </div>
+
+    <footer></footer>
+   
     <script type="text/javascript" src="assets/javascript/game.js"></script>
 </body>
 
